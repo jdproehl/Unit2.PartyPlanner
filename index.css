@@ -1,0 +1,50 @@
+ul {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    flex: 1 1 300px;
+    max-height: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: auto;
+  }
+  
+  li img {
+    max-width: 100%;
+    max-height: 30%;
+  }
+/*
+  h1 {
+    color: blue;
+    border: 3px solid blueviolet;
+    background-image: linear-gradient(red, yellow);
+    margin-right: auto;
+    margin-left: auto;
+    width: 200px;
+    padding: 3px;
+    text-align: center;
+    display: block;
+  }
+
+  h2 {
+    color: blue;
+    border: 3px solid blueviolet;
+    background-image: linear-gradient(red, yellow);
+    margin-right: 2100px;    
+    margin-right: auto;
+    margin-left: auto;
+    width: 432px;
+    padding: 3px;
+  }
+
+  label {
+    color: white;
+    font-size: x-large;
+  }
+  style="background-image: url('https://history-computer.com/wp-content/uploads/2023/02/shutterstock_1078439036-scaled.jpg');"
