@@ -1,4 +1,4 @@
-const COHORT = "2309-FTB-ET-WEB-PT";
+const COHORT = "2309-ftb-et-web-pt";
 const API_URL = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/${COHORT}/events`;
 
 // Create an empty array for 'addPartyDetails', which will store the applications state.
@@ -55,10 +55,26 @@ function renderParties() {
     partyList.replaceChildren(...partyCards);
 
     // Addding listeners for delete buttons.
-    const deleteButtons = document.querySelectorAll("delete-button");
+    const deleteButtons = document.querySelectorAll(".delete-button");
     deleteButtons.forEach((button) => {
-        button.addEventListener("click", () => DeleteParty(button.dataset.partyId));
+        button.addEventListener("click", () => deleteParty(button.dataset.partyId));
     });
+}
+
+async function deleteParty(partyId) {
+  try {
+      const response = await fetch(`${API_URL}/${partyId}`, {
+          method: "DELETE",
+      });
+
+      if (!response.ok) {
+          throw new Error("Failed to delete Party!");
+      }
+
+      render();
+  } catch (error) {
+      console.error(error);
+  }
 }
 
 // Ask the API to create a new party based on the form data
@@ -73,9 +89,9 @@ async function addParty(event) {
             name: addPartyDetailsForm.name.value,
             dates: addPartyDetailsForm.dates.value,
         //  times: addPartyDetailsForm.times.value,
-            times: "2021-09-30T00:00:000Z",
+        //  times: "2021-09-30T00:00:000Z",
             locations: addPartyDetailsForm.locations.value,
-        //    imageUrl: addPartyDetailsForm.imageUrl.value,
+        //  imageUrl: addPartyDetailsForm.imageUrl.value,
             description: addPartyDetailsForm.description.value,
         }),
     });
